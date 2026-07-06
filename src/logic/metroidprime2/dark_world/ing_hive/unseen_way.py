@@ -17,9 +17,14 @@ class UnseenWay_East(MetroidPrime2Region):
     desc = "East"
     exits = [
         MetroidPrime2Exit(
-            destination="Ing Hive - Culling Chamber",
+            destination="Ing Hive - Culling Chamber (West Safe Zone)",
             door=DoorCover.Any,
-            rule=lambda state, player: can_activate_safe_zone(state, player)
+            rule=lambda state, player: condition_or([
+                can_activate_safe_zone(state, player),
+                state.count("Energy Tank", player) >= 1,
+                has_dark_suit(state, player),
+                has_light_suit(state, player),
+            ]),
         ),
         MetroidPrime2Exit(
             destination="Ing Hive - Unseen Way (West)",

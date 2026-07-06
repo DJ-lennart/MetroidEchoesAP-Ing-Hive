@@ -17,18 +17,17 @@ class CentralHiveEastTransport_Lower(MetroidPrime2Region):
         MetroidPrime2Exit(
             destination="Ing Hive - Central Hive East Transport (Upper)",
             door=DoorCover.Opened,
-            rule=lambda state, player: True
-            #state.has("Scan Visor", player), if scan ever gets shuffled
+            rule=lambda state, player: True,
         ),
         MetroidPrime2Exit(
-            destination="Ing Hive - Culling Chamber (Safe Zone 2)",
+            destination="Ing Hive - Culling Chamber (North Safe Zone)",
             door=DoorCover.Dark,
             rule=lambda state, player: condition_or([
-            can_activate_safe_zone(state, player),
-            condition_or([
-                state.count("Energy Tank", player) >= 1,
-                has_dark_suit(state, player),
-                has_light_suit(state, player),
+                can_activate_safe_zone(state, player),
+                condition_or([
+                    state.count("Energy Tank", player) >= 1,
+                    has_dark_suit(state, player),
+                    has_light_suit(state, player),
                 ]),
             ]),
         ),
@@ -41,19 +40,11 @@ class CentralHiveEastTransport_Upper(MetroidPrime2Region):
         MetroidPrime2Exit(
             destination="Ing Hive - Central Hive East Transport (Lower)",
             door=DoorCover.Opened,
-            rule=lambda state, player: True
-            #state.has("Scan Visor)", player), if scan ever gets shuffled
+            rule=lambda state, player: True,
         ),
         MetroidPrime2Exit(
-            destination="Ing Hive - Hive Dynamo Works (North Track Safe Zone)",
+            destination="Ing Hive - Hive Dynamo Works (North Track Door)",
             door=DoorCover.Dark,
-            rule=lambda state, player: condition_or([
-            can_activate_safe_zone(state, player),
-            condition_or([
-                state.count("Energy Tank", player) >= 1,
-                has_dark_suit(state, player),
-                has_light_suit(state, player),
-                ]),
-            ]),
+            rule=lambda state, player: True,
         ),
     ]

@@ -1,25 +1,10 @@
 from BaseClasses import ItemClassification, MultiWorld
 
 from ... import (
-    has_light_ammo,
-    can_use_power_beam,
-    can_use_light_beam,
-    can_use_charged_power_beam,
-    can_use_charged_dark_beam,
-    can_use_charged_light_beam,
-    can_use_charged_annihilator_beam,
-    can_use_super_missile,
-    can_use_darkburst,
-    can_use_sunburst,
-    can_use_boost_ball,
     can_use_spider_ball,
-    can_lay_bomb,
-    can_lay_bomb_or_pb,
     can_use_screw_attack,
-    get_missile_count,
     has_dark_suit,
     has_light_suit,
-    can_activate_safe_zone,
     has_trick_enabled,
 )
 
@@ -132,14 +117,9 @@ class HiveTemple_North(MetroidPrime2Region):
             rule=lambda state, player: True
         ),
         MetroidPrime2Exit(
-            destination="Ing Hive - Hive Temple Access (Safe Zone)",
+            destination="Ing Hive - Hive Temple Access (Temple Door)",
             door=DoorCover.Any,
-            rule=lambda state, player: condition_or([
-                can_activate_safe_zone(state, player),
-                state.count("Energy Tank", player) >= 1,
-                has_dark_suit(state, player),
-                has_light_suit(state, player),
-            ]),
+            rule=lambda state, player: True
         ),
     ]
 
@@ -148,32 +128,14 @@ class HiveTemple_South(MetroidPrime2Region):
     desc = "South"
     exits = [
         MetroidPrime2Exit(
-            destination="Ing Hive - Hive Controller Access",
+            destination="Ing Hive - Hive Controller Access (Temple Door)",
             door=DoorCover.Annihilator,
-            rule=lambda state, player: condition_or([
-                can_lay_bomb(state, player),
-                condition_and([
-                    has_trick_enabled(state, player, "Ing Hive - Hive Controller Access | Bomb Slot Without Bombs"),
-                    state.has("Space Jump Boots", player),
-                    condition_or([
-                        can_use_darkburst(state, player),
-                        can_use_sunburst(state, player),
-                    ]),
-                ]),
-                condition_and([
-                    has_trick_enabled(state, player, "Ing Hive - Hive Controller Access | Bomb Slot Without Bombs NSJ SA Standable"),
-                    can_use_screw_attack(state, player, True),
-                    condition_or([
-                        can_use_darkburst(state, player),
-                        can_use_sunburst(state, player),
-                    ]),
-                ]),
-            ]),
+            rule=lambda state, player: True,
         ),
         MetroidPrime2Exit(
             destination="Ing Hive - Hive Temple",
             door=DoorCover.Opened,
-            rule=lambda state, player: True
+            rule=lambda state, player: True,
         ),
     ]
 
@@ -187,39 +149,11 @@ class HiveTemple_West(MetroidPrime2Region):
             rule=lambda state, player: True
         ),
         MetroidPrime2Exit(
-            destination="Ing Hive - Temple Security Access",
+            destination="Ing Hive - Temple Security Access (Temple Door)",
             door=DoorCover.Annihilator,
-            rule=lambda state, player: condition_and([
-                condition_or([
-                    can_lay_bomb(state, player),
-                    condition_and([
-                        has_trick_enabled(state, player, "Ing Hive - Temple Security Access | Get through with NSJ SA"),
-                        can_use_screw_attack(state, player, True),
-                    ]),
-                    condition_and([
-                        has_trick_enabled(state, player, "Ing Hive - Temple Security Access | Get through with SA"),
-                        can_use_screw_attack(state, player),
-                    ]),
-                    condition_and([
-                        has_trick_enabled(state, player, "Ing Hive - Temple Security Access | Get through with Wall Boosts"),
-                        can_use_boost_ball(state, player)
-                    ]),
-                ]),
-                condition_or([
-                    condition_and([
-                        has_trick_enabled(state, player, "Ing Hive - Temple Security Access | Temple Security Access with Dark Suit"),
-                        has_dark_suit(state, player),
-                        state.count("Energy Tank", player) >= 2
-                    ]),
-                    condition_and([
-                        has_trick_enabled(state, player, "Ing Hive - Temple Security Access | Temple Security Access with No Suit"),
-                        state.count("Energy Tank", player) >= 4
-                    ]),
-                    has_light_suit(state, player),
-                ]),
-            ]),
+            rule=lambda state, player: True
         ),
-    ]
+    ],
 
 class HiveTemple_Quadraxis(MetroidPrime2Region):
 
@@ -275,4 +209,3 @@ class HiveTemple_Quadraxis(MetroidPrime2Region):
             name="Pickup (Annihilator Beam)",
             can_access=lambda state, player: state.has("Ing Hive - Hive Temple | Quadraxis", player),
         )
-#without space jump you can do a NSJ screw attack

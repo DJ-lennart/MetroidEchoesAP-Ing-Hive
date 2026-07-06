@@ -15,8 +15,8 @@ class HiveControllerAccess(MetroidPrime2Region):
     name = "Hive Controller Access"
     exits = [
         MetroidPrime2Exit(
-            destination="Ing Hive - Hive Energy Controller",
-            door=DoorCover.Any,
+            destination="Ing Hive - Hive Controller Access (Temple Door)",
+            door=DoorCover.Opened,
             rule=lambda state, player: condition_or([
                 can_lay_bomb(state, player),
                 condition_and([
@@ -38,8 +38,8 @@ class HiveControllerAccess(MetroidPrime2Region):
             ]),
         ),
         MetroidPrime2Exit(
-            destination="Ing Hive - Hive Temple (South)",
-            door=DoorCover.Annihilator,
+            destination="Ing Hive - Hive Controller Access (Controller Door)",
+            door=DoorCover.Opened,
             rule=lambda state, player: condition_or([
                 can_lay_bomb(state, player),
                 condition_and([
@@ -59,5 +59,37 @@ class HiveControllerAccess(MetroidPrime2Region):
                     ]),
                 ]),
             ]),
+        ),
+    ]
+
+class HiveControllerAccess_TempleDoor(MetroidPrime2Region):
+    name = "Hive Controller Access"
+    desc = "Temple Door"
+    exits = [
+        MetroidPrime2Exit(
+            destination="Ing Hive - Hive Controller Access",
+            door=DoorCover.Opened,
+            rule=lambda state, player: True,
+        ),
+        MetroidPrime2Exit(
+            destination="Ing Hive - Hive Temple (South)",
+            door=DoorCover.Annihilator,
+            rule=lambda state, player: True,
+        ),
+    ]
+
+class HiveControllerAccess_ControllerDoor(MetroidPrime2Region):
+    name = "Hive Controller Access"
+    desc = "Controller Door"
+    exits = [
+        MetroidPrime2Exit(
+            destination="Ing Hive - Hive Controller Access",
+            door=DoorCover.Any,
+            rule=lambda state, player: True,
+        ),
+        MetroidPrime2Exit(
+            destination="Ing Hive - Hive Energy Controller",
+            door=DoorCover.Opened,
+            rule=lambda state, player: True,
         ),
     ]

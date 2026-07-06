@@ -29,8 +29,8 @@ class HiveDynamoWorks_NorthTrackSafeZone(MetroidPrime2Region):
     desc = "North Track Safe Zone"
     exits = [
         MetroidPrime2Exit(
-            destination="Ing Hive - Central Hive East Transport (Upper)",
-            door=DoorCover.Dark,
+            destination="Ing Hive - Hive Dynamo Works (North Track Door)",
+            door=DoorCover.Opened,
             rule=lambda state, player: condition_and([
                 can_activate_safe_zone(state, player),
                 condition_or([
@@ -83,11 +83,27 @@ class HiveDynamoWorks_NorthTrackSafeZone(MetroidPrime2Region):
                         has_trick_enabled(state, player, "Ing Hive - Hive Dynamo Works | NSJ E-Dash across gap North"),
                         state.has("Scan Visor", player)
                     ]),
-                    
-                ])
-            ])
-        )
-    ]
+                ]),
+            ]),
+        ),
+    ],
+
+
+class HiveDynamoWorks_NorthTrackDoor(MetroidPrime2Region):
+    name = "Hive Dynamo Works"
+    desc = "North Track Door"
+    exits = [
+        MetroidPrime2Exit(
+            destination="Ing Hive - Central Hive East Transport (Upper)",
+            door=DoorCover.Dark,
+            rule=lambda state, player: True,
+        ),
+        MetroidPrime2Exit(
+            destination="Ing Hive - Hive Dynamo Works (North Track Safe Zone)",
+            door=DoorCover.Opened,
+            rule=lambda state, player: True,
+        ),
+    ],
 
 class HiveDynamoWorks_NorthPortalSafeZone(MetroidPrime2Region):
     name = "Hive Dynamo Works"

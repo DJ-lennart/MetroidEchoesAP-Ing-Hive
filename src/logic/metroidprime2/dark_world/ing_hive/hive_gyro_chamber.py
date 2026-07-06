@@ -152,7 +152,11 @@ class HiveGyroChamber_NorthUpper(MetroidPrime2Region):
         MetroidPrime2Exit(
             destination="Ing Hive - Hive Gyro Chamber (Ball)",
             door=DoorCover.Opened,
-            rule=lambda state, player: True
+            rule=lambda state, player: condition_or([
+                state.count("Energy Tank", player) >= 1,
+                has_dark_suit(state, player),
+                has_light_suit(state, player),
+            ]),
         )
     ]
 
@@ -188,6 +192,6 @@ class HiveGyroChamber_SouthUpper(MetroidPrime2Region):
                 state.count("Energy Tank", player) >= 1,
                 has_dark_suit(state, player),
                 has_light_suit(state, player),
-            ])
-        )
+            ]),
+        ),
     ]

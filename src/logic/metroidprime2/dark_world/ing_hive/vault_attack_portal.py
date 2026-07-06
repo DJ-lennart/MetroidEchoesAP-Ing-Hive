@@ -16,7 +16,7 @@ from .....Utils import condition_and, condition_or
 
 
 class VaultAttackPortal_BeamPortal(MetroidPrime2Region):
-    name = "Judgement Drop"
+    name = "Vault Attack Portal"
     desc = "Beam Portal"
     exits = [
         MetroidPrime2Exit(
@@ -49,7 +49,7 @@ class VaultAttackPortal_BeamPortal(MetroidPrime2Region):
 
 
 class VaultAttackPortal_ScanPortal(MetroidPrime2Region):
-    name = "Judgement Drop"
+    name = "Vault Attack Portal"
     desc = "Scan Portal"
     exits = [
         MetroidPrime2Exit(

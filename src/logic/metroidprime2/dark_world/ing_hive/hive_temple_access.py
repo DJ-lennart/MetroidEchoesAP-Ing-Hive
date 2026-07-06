@@ -81,14 +81,9 @@ class HiveTempleAccess_SafeZone(MetroidPrime2Region):
     desc = "Safe Zone"
     exits = [
         MetroidPrime2Exit(
-            destination="Ing Hive - Hive Temple (North)",
+            destination="Ing Hive - Hive Temple Access (Temple Door)",
             door=DoorCover.Any,
-            rule=lambda state, player: condition_or([
-                    can_activate_safe_zone(state, player),
-                    state.count("Energy Tank", player) >= 1,
-                    has_dark_suit(state, player),
-                    has_light_suit(state, player),
-                ]),
+            rule=lambda state, player: True
         ),
         MetroidPrime2Exit(
             destination="Ing Hive - Hive Temple Access (Key Door)",
@@ -150,5 +145,26 @@ class HiveTempleAccess_SafeZone(MetroidPrime2Region):
                     ]),
                 ]),
             ]),
+        ),
+    ]
+
+class HiveTempleAccess_TempleDoor(MetroidPrime2Region):
+    name = "Hive Temple Access"
+    desc = "Temple Door"
+    exits = [
+        MetroidPrime2Exit(
+            destination="Ing Hive - Hive Temple (North)",
+            door=DoorCover.Any,
+            rule=lambda state, player: True
+        ),
+        MetroidPrime2Exit(
+            destination="Ing Hive - Hive Temple Access (Safe Zone)",
+            door=DoorCover.Opened,
+            rule=lambda state, player: condition_or([
+                    can_activate_safe_zone(state, player),
+                    state.count("Energy Tank", player) >= 1,
+                    has_dark_suit(state, player),
+                    has_light_suit(state, player),
+                ]),
         ),
     ]

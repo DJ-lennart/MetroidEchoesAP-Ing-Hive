@@ -24,7 +24,7 @@ class HiveDynamoAccess_EchoLock(MetroidPrime2Region):
     desc = "Echo Lock"
     exits = [
         MetroidPrime2Exit(
-            destination="Ing Hive - Hive Dynamo Works",
+            destination="Ing Hive - Hive Dynamo Works (North Portal Safe Zone)",
             door=DoorCover.Light,
             rule=lambda state, player: True,
         ),
@@ -73,7 +73,7 @@ class HiveDynamoAccess_GyroSide(MetroidPrime2Region):
     desc = "Gyro Side"
     exits = [
         MetroidPrime2Exit(
-            destination="Ing Hive - Hive Dynamo Access",
+            destination="Ing Hive - Hive Dynamo Access (Echo Lock)",
             door=DoorCover.Opened,
             rule=lambda state, player: condition_and([
                 condition_or([

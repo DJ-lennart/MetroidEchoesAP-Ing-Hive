@@ -34,7 +34,11 @@ class HiveReactor_Upper(MetroidPrime2Region):
         MetroidPrime2Exit(
             destination="Ing Hive - Unseen Way (West)",
             door=DoorCover.Any,
-            rule=lambda state, player: can_activate_safe_zone(state, player),
+            rule=lambda state, player: condition_or([
+                state.count("Energy Tank", player) >= 1,
+                has_dark_suit(state, player),
+                has_light_suit(state, player),
+            ]),
         ),
     ]
 

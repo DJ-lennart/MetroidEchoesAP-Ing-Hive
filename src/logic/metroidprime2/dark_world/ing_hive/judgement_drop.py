@@ -19,12 +19,9 @@ class JudgementDrop_Door(MetroidPrime2Region):
     desc = "Door"
     exits = [
         MetroidPrime2Exit(
-            destination="Ing Hive - Aerial Training Site (Safe Zones)",
+            destination="Ing Hive - Aerial Training Site (Ledge Door)",
             door=DoorCover.Any,
-            rule=lambda state, player: condition_or([
-                state.has("Space Jump Boots", player),
-                has_trick_enabled(state, player, "Ing Hive - Aerial Training Site | NSJ to Judgement Drop Door"),
-            ]),
+            rule=lambda state, player: True,
         ),
         MetroidPrime2Exit(
             destination="Ing Hive - Judgement Drop (Portal)",

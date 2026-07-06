@@ -1,9 +1,5 @@
 from BaseClasses import ItemClassification, MultiWorld
 
-from ... import (
-    can_lay_bomb,
-)
-
 from .....Enums import DoorCover
 from .....Items import MetroidPrime2Item
 from .....Regions import MetroidPrime2Exit, MetroidPrime2Region
@@ -12,9 +8,9 @@ class HiveEnergyController(MetroidPrime2Region):
     name = "Hive Energy Controller"
     exits = [
         MetroidPrime2Exit(
-            destination="Ing Hive - Hive Controller Access",
+            destination="Ing Hive - Hive Controller Access (Controller Door)",
             door=DoorCover.Any,
-            rule=lambda state, player: can_lay_bomb(state, player)
+            rule=lambda state, player: True,
         ),
     ]
 

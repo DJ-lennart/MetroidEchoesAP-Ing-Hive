@@ -136,47 +136,44 @@ class AerialTrainingSite_CrystalDoor(MetroidPrime2Region):
                 ]),
                 condition_or([
                     has_light_suit(state, player),
+                    has_dark_suit(state, player),
                     condition_and([
                         can_activate_safe_zone(state, player),
-                        condition_or([
-                            state.count("Energy Tank", player) >= 1, #Maybe an extra could be added because of the dark commandos
-                            has_dark_suit(state, player),
-                        ]),
+                        state.count("Energy Tank", player) >= 1,
                     ]),
                 ]),
             ]),
         ),
         MetroidPrime2Exit(
-            destination="Ing Hive - Temple Security Access",
+            destination="Ing Hive - Temple Security Access (Training Site Door)",
             door=DoorCover.Annihilator,
-            rule=lambda state, player: condition_and([
-                condition_or([
-                    can_lay_bomb(state, player),
-                    condition_and([
-                        has_trick_enabled(state, player, "Ing Hive - Temple Security Access | Get through with NSJ SA"),
-                        can_use_screw_attack(state, player, True)
+            rule=lambda state, player: True
+        ),
+    ]
+
+
+class AerialTrainingSite_LedgeDoor(MetroidPrime2Region):
+    name = "Aerial Training Site"
+    desc = "Ledge Door"
+    exits = [
+        MetroidPrime2Exit(
+            destination="Ing Hive - Aerial Training Site (Safe Zones)",
+            door=DoorCover.Opened,
+            rule=lambda state, player: condition_or([
+                has_light_suit(state, player),
+                condition_and([
+                    can_activate_safe_zone(state, player),
+                    condition_or([
+                        state.count("Energy Tank", player) >= 1,
+                        has_dark_suit(state, player),
                     ]),
-                    condition_and([
-                        has_trick_enabled(state, player, "Ing Hive - Temple Security Access | Get through with SA"),
-                        can_use_screw_attack(state, player),
-                    ]),
-                    condition_and([
-                        has_trick_enabled(state, player, "Ing Hive - Temple Security Access | Get through with Wall Boosts"),
-                        can_use_boost_ball(state, player)
-                    ]),
-                ]),
-                condition_or([
-                    condition_and([
-                        has_trick_enabled(state, player, "Ing Hive - Temple Security Access | Get through Access with Dark Suit"),
-                        state.count("Energy Tank", player) >= 2
-                    ]),
-                    condition_and([
-                        has_trick_enabled(state, player, "Ing Hive - Temple Security Access | Get through Access with No Suit"),
-                        state.count("Energy Tank", player) >= 4
-                    ]),
-                    has_light_suit(state, player),
                 ]),
             ]),
+        ),
+        MetroidPrime2Exit(
+            destination="Ing Hive - Judgement Drop (Door)",
+            door=DoorCover.Any,
+            rule=lambda state, player: True,
         ),
     ]
 
@@ -280,7 +277,7 @@ class AerialTrainingSite_SafeZones(MetroidPrime2Region):
                         can_use_screw_attack(state, player, True)
                     ]),
                     condition_and([
-                        has_trick_enabled(state, player, "Ing Hive - Aerial Training SIte | E-Dash to Crystal Door"),
+                        has_trick_enabled(state, player, "Ing Hive - Aerial Training Site | E-Dash to Crystal Door"),
                         state.has_all({
                             "Space Jump Boots",
                             "Scan Visor",
@@ -312,7 +309,7 @@ class AerialTrainingSite_SafeZones(MetroidPrime2Region):
             rule=lambda state, player: True,
         ),
         MetroidPrime2Exit(
-            destination="Ing Hive - Judgement Drop (Door)",
+            destination="Ing Hive - Aerial Training Site (Ledge Door)",
             door=DoorCover.Any,
             rule=lambda state, player: condition_or([
                 state.has("Space Jump Boots", player),
