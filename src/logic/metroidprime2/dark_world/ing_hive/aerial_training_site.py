@@ -1,13 +1,13 @@
 from BaseClasses import ItemClassification, MultiWorld
 
 from ... import (
-    can_use_boost_ball,
+    can_activate_light_portal,
+    can_activate_safe_zone,
     can_lay_bomb,
+    can_use_boost_ball,
     can_use_screw_attack,
     has_dark_suit,
     has_light_suit,
-    can_activate_light_portal,
-    can_activate_safe_zone,
     has_trick_enabled,
 )
 
@@ -22,25 +22,6 @@ class AerialTrainingSite_Box(MetroidPrime2Region):
     desc = "Box"
     exits = [
         MetroidPrime2Exit(
-            destination="Ing Hive - Aerial Training Site (Crystal Door)",
-            door=DoorCover.Opened,
-            rule=lambda state, player: condition_and([
-                condition_or([
-                    can_use_screw_attack(state, player),
-                    condition_and([
-                        has_trick_enabled(state, player, "Ing Hive - Aerial Training Site | Z-Axis SA Throughout the Room"),
-                        can_use_screw_attack(state, player, True),
-                    ]),
-                ]),
-                state.has("Ing Hive - Aerial Training Site | Box Scanned", player),
-                condition_or([
-                    state.count("Energy Tank", player) >= 1,
-                    has_dark_suit(state, player),
-                    has_light_suit(state, player),
-                ]),
-            ]),
-        ),
-        MetroidPrime2Exit(
             destination="Ing Hive - Aerial Training Site (Safe Zones)",
             door=DoorCover.Opened,
             rule=lambda state, player: condition_and([
@@ -48,7 +29,7 @@ class AerialTrainingSite_Box(MetroidPrime2Region):
                     can_use_screw_attack(state, player),
                     condition_and([
                         has_trick_enabled(state, player, "Ing Hive - Aerial Training Site | Z-Axis SA Throughout the Room"),
-                        can_use_screw_attack(state, player, True),
+                        can_use_screw_attack(state, player, z_axis=True),
                     ]),
                     condition_and([
                         has_trick_enabled(state, player, "Ing Hive - Aerial Training Site | E-Dash from Box to Safe Zones"),
@@ -56,7 +37,7 @@ class AerialTrainingSite_Box(MetroidPrime2Region):
                             "Space Jump Boots", 
                             "Scan Visor"}, 
                             player),
-                    ]),
+                        ]),
                     ]),
                 state.has("Ing Hive - Aerial Training Site | Box Scanned", player),
                 condition_or([
@@ -89,7 +70,7 @@ class AerialTrainingSite_Box(MetroidPrime2Region):
                 code=None,
                 player=player,
             ),
-            can_access=lambda state, player: state.has("Scan Visor"),
+            can_access=lambda state, player: state.has("Scan Visor", player),
         )
         self.add_location(
             name="Pickup (Ing Hive Key 3)",
@@ -101,25 +82,6 @@ class AerialTrainingSite_CrystalDoor(MetroidPrime2Region):
     desc = "Crystal Door"
     exits = [
         MetroidPrime2Exit(
-            destination="Ing Hive - Aerial Training Site (Box)",
-            door=DoorCover.Opened,
-            rule=lambda state, player: condition_and([
-                condition_or([
-                    can_use_screw_attack(state, player),
-                    condition_and([
-                        has_trick_enabled(state, player, "Ing Hive - Aerial Training Site | Z-Axis SA Throughout the Room"),
-                        can_use_screw_attack(state, player, True),
-                    ]),
-                ]),
-                state.has("Ing Hive - Aerial Training Site | Box Scanned", player),
-                condition_or([
-                    state.count("Energy Tank", player) >= 1,
-                    has_dark_suit(state, player),
-                    has_light_suit(state, player),
-                ]),
-            ]),
-        ),
-        MetroidPrime2Exit(
             destination="Ing Hive - Aerial Training Site (Safe Zones)",
             door=DoorCover.Opened,
             rule=lambda state, player: condition_and([
@@ -127,7 +89,7 @@ class AerialTrainingSite_CrystalDoor(MetroidPrime2Region):
                     can_use_screw_attack(state, player),
                     condition_and([
                         has_trick_enabled(state, player, "Ing Hive - Aerial Training Site | Z-Axis SA Throughout the Room"),
-                        can_use_screw_attack(state, player, True),
+                        can_use_screw_attack(state, player, z_axis=True),
                     ]),
                     condition_and([
                         has_trick_enabled(state, player, "Ing Hive - Aerial Training Site | SJ Terminal Fall from Crystal Door to Safe Zones"),
@@ -204,7 +166,7 @@ class AerialTrainingSite_Portal(MetroidPrime2Region):
                 can_use_screw_attack(state, player),
                 condition_and([
                         has_trick_enabled(state, player, "Ing Hive - Aerial Training Site | SA Wall Item Z-Axis SA"),
-                        state.has("Screw Attack", player, True),
+                        can_use_screw_attack(state, player, z_axis=True),
                     ]),
                 condition_and([
                     has_trick_enabled(state, player, "Ing Hive - Aerial Training Site | SA Wall Item with DBJ and Roll Jump"),
@@ -234,7 +196,7 @@ class AerialTrainingSite_SafeZones(MetroidPrime2Region):
                     can_use_screw_attack(state, player),
                     condition_and([
                         has_trick_enabled(state, player, "Ing Hive - Aerial Training Site | Z-Axis SA Throughout the Room"),
-                        can_use_screw_attack(state, player, True)
+                        can_use_screw_attack(state, player, z_axis=True),
                     ]),
                     condition_and([
                         has_trick_enabled(state, player, "Ing Hive - Aerial Training Site | SJ and Scan Dash to Box"),
@@ -274,7 +236,7 @@ class AerialTrainingSite_SafeZones(MetroidPrime2Region):
                     can_use_screw_attack(state, player),
                     condition_and([
                         has_trick_enabled(state, player, "Ing Hive - Aerial Training Site | Z-Axis SA Throughout the Room"),
-                        can_use_screw_attack(state, player, True)
+                        can_use_screw_attack(state, player, z_axis=True),
                     ]),
                     condition_and([
                         has_trick_enabled(state, player, "Ing Hive - Aerial Training Site | E-Dash to Crystal Door"),
@@ -287,7 +249,7 @@ class AerialTrainingSite_SafeZones(MetroidPrime2Region):
                         has_trick_enabled(state, player, "Ing Hive - Aerial Training Site | Roll Jump to Crystal Door"),
                         state.has_all({
                             "Space Jump Boots",
-                            "Morph Balls",
+                            "Morph Ball",
                         }, player)
                     ]),
                 ]),
@@ -317,6 +279,3 @@ class AerialTrainingSite_SafeZones(MetroidPrime2Region):
             ]),
         ),
     ]
-
-
-
