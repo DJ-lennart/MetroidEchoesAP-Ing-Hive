@@ -1,9 +1,9 @@
 from BaseClasses import MultiWorld
 
 from ... import (
+    can_activate_safe_zone,
     has_dark_suit,
     has_light_suit,
-    can_activate_safe_zone,
 )
 
 from .....Enums import DoorCover
@@ -17,7 +17,7 @@ class CentralHiveEastTransport_Lower(MetroidPrime2Region):
         MetroidPrime2Exit(
             destination="Ing Hive - Central Hive East Transport (Upper)",
             door=DoorCover.Opened,
-            rule=lambda state, player: True,
+            rule=lambda state, player: state.has("Scan Visor", player),
         ),
         MetroidPrime2Exit(
             destination="Ing Hive - Culling Chamber (North Safe Zone)",
@@ -40,7 +40,7 @@ class CentralHiveEastTransport_Upper(MetroidPrime2Region):
         MetroidPrime2Exit(
             destination="Ing Hive - Central Hive East Transport (Lower)",
             door=DoorCover.Opened,
-            rule=lambda state, player: True,
+            rule=lambda state, player: state.has("Scan Visor", player),
         ),
         MetroidPrime2Exit(
             destination="Ing Hive - Hive Dynamo Works (North Track Door)",
@@ -48,3 +48,4 @@ class CentralHiveEastTransport_Upper(MetroidPrime2Region):
             rule=lambda state, player: True,
         ),
     ]
+    
