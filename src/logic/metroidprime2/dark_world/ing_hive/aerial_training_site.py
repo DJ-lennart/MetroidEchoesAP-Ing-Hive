@@ -180,7 +180,7 @@ class AerialTrainingSite_Portal(MetroidPrime2Region):
                         "Morph Ball",
                     },player)
                 ]),
-                ]),
+            ]),
         )
 
 
