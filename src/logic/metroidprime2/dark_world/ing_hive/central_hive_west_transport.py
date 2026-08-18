@@ -8,9 +8,9 @@ from ... import (
 )
 
 from .....Enums import DoorCover
+from .....Locations import MetroidPrime2Location
 from .....Regions import MetroidPrime2Exit, MetroidPrime2Region, MetroidPrime2Location
 from .....Utils import condition_and, condition_or
-from .....Locations import MetroidPrime2Location
 
 
 class CentralHiveWestTransport_Lower(MetroidPrime2Region):
