@@ -1,11 +1,11 @@
 from BaseClasses import MultiWorld
 
 from ... import (
-    can_use_spider_ball,
+    can_activate_safe_zone,
     can_lay_bomb,
+    can_use_spider_ball,
     has_dark_suit,
     has_light_suit,
-    can_activate_safe_zone,
     has_trick_enabled,
 )
 
