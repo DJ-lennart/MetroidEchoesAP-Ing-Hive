@@ -1,15 +1,16 @@
 from BaseClasses import ItemClassification, MultiWorld
 
 from ... import (
+    can_activate_safe_zone,
     can_use_screw_attack,
     has_dark_suit,
     has_light_suit,
-    can_activate_safe_zone,
 )
 
 from .....Enums import DoorCover
 from .....Regions import MetroidPrime2Exit, MetroidPrime2Region, MetroidPrime2Location
 from .....Utils import condition_and, condition_or
+from .....Locations import MetroidPrime2Location
 
 
 class CentralHiveWestTransport_Lower(MetroidPrime2Region):
@@ -20,9 +21,7 @@ class CentralHiveWestTransport_Lower(MetroidPrime2Region):
             destination="Ing Hive - Central Hive West Transport (Upper)",
             door=DoorCover.Opened,
             rule=lambda state, player: condition_and([
-                condition_or([
-                    can_use_screw_attack(state, player),
-                ]),
+                can_use_screw_attack(state, player),
                 condition_or([
                     state.count("Energy Tank", player) >= 1,
                     has_dark_suit(state, player),
