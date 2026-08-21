@@ -123,3 +123,4 @@ class UnseenWay_West(MetroidPrime2Region):
             ]),
         ),
     ]
+    
