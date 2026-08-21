@@ -50,3 +50,4 @@ class HiveReactorAcces(MetroidPrime2Region):
             ]),
         ),
     ]
+    
