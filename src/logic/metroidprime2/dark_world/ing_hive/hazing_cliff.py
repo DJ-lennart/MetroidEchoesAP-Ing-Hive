@@ -1,8 +1,8 @@
 from BaseClasses import MultiWorld
 
 from ... import (
-    can_use_charged_light_beam,
     can_use_charged_annihilator_beam,
+    can_use_charged_light_beam,
     has_dark_suit,
     has_light_suit,
 )
@@ -54,7 +54,7 @@ class HazingCliff_Item(MetroidPrime2Region):
                     can_use_charged_light_beam(state, player),
                 ]),
                 condition_or([
-                    state.count("Energy Tank") >= 1,
+                    state.count("Energy Tank", player) >= 1,
                     has_dark_suit(state, player),
                     has_light_suit(state, player),
                 ]),
@@ -68,3 +68,4 @@ class HazingCliff_Item(MetroidPrime2Region):
             name="Pickup (Missile Expansion)",
             can_access=lambda state, player: True,
         )
+        
