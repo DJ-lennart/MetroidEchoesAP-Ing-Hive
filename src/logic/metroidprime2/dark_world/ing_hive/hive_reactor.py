@@ -102,3 +102,4 @@ class HiveReactor_Lower(MetroidPrime2Region):
             ]),
         ),
     ]
+    
