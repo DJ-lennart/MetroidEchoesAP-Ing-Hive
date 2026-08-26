@@ -31,3 +31,4 @@ class HiveGyroAccess(MetroidPrime2Region):
             ]),
         ),
     ]
+    
