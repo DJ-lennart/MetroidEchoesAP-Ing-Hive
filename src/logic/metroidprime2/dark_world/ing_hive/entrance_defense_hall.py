@@ -36,3 +36,4 @@ class EntranceDefenseHall(MetroidPrime2Region):
             ]),
         ),
     ]
+    
