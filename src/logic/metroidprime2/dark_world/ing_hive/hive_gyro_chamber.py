@@ -195,3 +195,4 @@ class HiveGyroChamber_SouthUpper(MetroidPrime2Region):
             ]),
         ),
     ]
+    
