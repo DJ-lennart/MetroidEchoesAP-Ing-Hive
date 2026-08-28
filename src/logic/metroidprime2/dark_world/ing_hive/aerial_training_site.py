@@ -4,7 +4,6 @@ from ... import (
     can_activate_light_portal,
     can_activate_safe_zone,
     can_lay_bomb,
-    can_use_boost_ball,
     can_use_screw_attack,
     has_dark_suit,
     has_light_suit,

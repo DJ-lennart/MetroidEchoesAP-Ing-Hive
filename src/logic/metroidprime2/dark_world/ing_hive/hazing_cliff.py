@@ -68,4 +68,3 @@ class HazingCliff_Item(MetroidPrime2Region):
             name="Pickup (Missile Expansion)",
             can_access=lambda state, player: True,
         )
-        

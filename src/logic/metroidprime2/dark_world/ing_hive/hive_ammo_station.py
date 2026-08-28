@@ -21,4 +21,3 @@ class HiveAmmoStation(MetroidPrime2Region):
             ]),
         ),
     ]
-    

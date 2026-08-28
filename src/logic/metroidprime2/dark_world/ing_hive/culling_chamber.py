@@ -219,4 +219,3 @@ class CullingChamber_WestSafeZone(MetroidPrime2Region):
             ]),
         ),
     ]
-

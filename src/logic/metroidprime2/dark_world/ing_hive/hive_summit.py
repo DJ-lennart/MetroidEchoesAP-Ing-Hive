@@ -30,7 +30,6 @@ class HiveSummit_Portal(MetroidPrime2Region):
         ),
     ]
 
-
 class HiveSummit_SafeZone(MetroidPrime2Region):
     name = "Hive Summit"
     desc = "Safe Zone"
@@ -44,7 +43,7 @@ class HiveSummit_SafeZone(MetroidPrime2Region):
                     condition_and([
                         state.has("Space Jump Boots", player),
                         can_use_boost_ball(state, player)
-                        ]),
+                    ]),
                     condition_and([
                         has_trick_enabled(state, player, "Ing Hive - Hive Summit | Reach Portal with Bombs Only"),
                         can_lay_bomb(state, player),
@@ -62,7 +61,7 @@ class HiveSummit_SafeZone(MetroidPrime2Region):
                         has_trick_enabled(state, player, "Ing Hive - Hive Summit | Reach Portal with SJ Only"),
                         state.has("Space Jump Boots", player)
                     ]),
-                    ]),
+                ]),
                 condition_or([
                     state.count("Energy Tank", player) >= 2,
                     has_dark_suit(state, player),
@@ -71,4 +70,3 @@ class HiveSummit_SafeZone(MetroidPrime2Region):
             ]),
         ),
     ]
-

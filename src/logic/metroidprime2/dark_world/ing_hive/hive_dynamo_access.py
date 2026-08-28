@@ -1,16 +1,16 @@
 from BaseClasses import ItemClassification, MultiWorld
 
 from ... import (
-    can_use_power_beam,
-    can_use_dark_beam,
-    can_use_light_beam,
+    can_activate_safe_zone,
     can_use_annihilator_beam,
-    can_use_sunburst,
+    can_use_dark_beam,
+    can_use_darkburst,
+    can_use_light_beam,
+    can_use_power_beam,
     can_use_sonic_boom,
-    has_missile_count,
     has_dark_suit,
     has_light_suit,
-    can_activate_safe_zone,
+    has_missile_count,
     has_trick_enabled,
 )
 
@@ -40,7 +40,7 @@ class HiveDynamoAccess_EchoLock(MetroidPrime2Region):
                         has_light_suit(state, player),
                     ]),
                 ]),
-                state.has("Ing Hive - Hive Dynamo Access | Echo Gate Opened"),
+                state.has("Ing Hive - Hive Dynamo Access | Echo Gate Opened", player),
             ]),
         ),
     ]
@@ -85,12 +85,12 @@ class HiveDynamoAccess_GyroSide(MetroidPrime2Region):
                     ]),
                 ]),
                 condition_or([
-                    state.has("Ing Hive - Hive Dynamo Access | Echo Gate Opened"),
+                    state.has("Ing Hive - Hive Dynamo Access | Echo Gate Opened", player),
                     condition_and([
                         has_trick_enabled(state, player, "Ing Hive - Hive Dynamo Access | Sonicboom or Darkburst Behind Echo Lock"),
                         condition_or([
-                            can_use_sunburst(state, player),
-                            can_use_sonic_boom(state, player),
+                            can_use_darkburst(state, player, amount_to_use=2),
+                            can_use_sonic_boom(state, player, amount_to_use=2),
                         ])
                     ]),
                 ]),

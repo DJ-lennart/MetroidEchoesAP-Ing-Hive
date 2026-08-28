@@ -50,4 +50,3 @@ class HivePortalChamber_Upper(MetroidPrime2Region):
             ]),
         ),
     ]
-    

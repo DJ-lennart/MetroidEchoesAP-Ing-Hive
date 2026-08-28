@@ -16,9 +16,8 @@ class HiveSaveStation(MetroidPrime2Region):
     exits = [
         MetroidPrime2Exit(
             destination="Hive Reactor",
-            door=DoorCover.Missile,
+            door=DoorCover.Any,
             rule=lambda state, player: condition_and([
-                has_missile_count(state, player, 5),
                 condition_or([
                     state.count("Energy Tank", player) >= 1,
                     has_dark_suit(state, player),

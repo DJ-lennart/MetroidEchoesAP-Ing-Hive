@@ -48,4 +48,3 @@ class CentralHiveEastTransport_Upper(MetroidPrime2Region):
             rule=lambda state, player: True,
         ),
     ]
-    

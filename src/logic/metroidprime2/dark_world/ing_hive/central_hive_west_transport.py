@@ -8,8 +8,7 @@ from ... import (
 )
 
 from .....Enums import DoorCover
-from .....Locations import MetroidPrime2Location
-from .....Regions import MetroidPrime2Exit, MetroidPrime2Region, MetroidPrime2Location
+from .....Regions import MetroidPrime2Exit, MetroidPrime2Region
 from .....Utils import condition_and, condition_or
 
 

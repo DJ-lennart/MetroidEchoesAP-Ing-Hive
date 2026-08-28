@@ -8,7 +8,7 @@ class HiveSaveStation2(MetroidPrime2Region):
     exits = [
         MetroidPrime2Exit(
             destination="Ing Hive - Hive Gyro Chamber (North Lower)",
-            door=DoorCover.Missile,
+            door=DoorCover.Any,
             rule=lambda state, player: True,
         ),
     ]

@@ -23,17 +23,12 @@ class EntranceDefenseHall(MetroidPrime2Region):
                 ]),
         ),
         MetroidPrime2Exit(
-            destination="Ing Hive - Hive Reactor Access",
+            destination="Ing Hive - Hive Reactor Access (Lower)",
             door=DoorCover.Any,
-            rule=lambda state, player: condition_and([
-                can_activate_safe_zone(state, player),
-                state.has("Space Jump", player),
-                condition_or([
-                    state.count("Energy Tank", player) >= 1,
-                    has_dark_suit(state, player),
-                    has_light_suit(state, player),
-                ]),
+            rule=lambda state, player: condition_or([
+                state.count("Energy Tank", player) >= 1,
+                has_dark_suit(state, player),
+                has_light_suit(state, player),
             ]),
         ),
     ]
-    

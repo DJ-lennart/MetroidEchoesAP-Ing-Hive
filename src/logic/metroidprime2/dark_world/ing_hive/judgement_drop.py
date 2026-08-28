@@ -51,7 +51,7 @@ class JudgementDrop_Door(MetroidPrime2Region):
 
 class JudgementDrop_Portal(MetroidPrime2Region):
     name = "Judgement Drop"
-    desc = "Door"
+    desc = "Portal"
     exits = [
         MetroidPrime2Exit(
             destination="Ing Hive - Judgement Drop (Door)",
