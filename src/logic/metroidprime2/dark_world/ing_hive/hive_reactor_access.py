@@ -84,3 +84,4 @@ class HiveReactorAccess_Upper(MetroidPrime2Region):
             ]),
         ),
     ]
+    
