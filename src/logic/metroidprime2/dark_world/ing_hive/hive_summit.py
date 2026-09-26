@@ -21,7 +21,7 @@ class HiveSummit_Portal(MetroidPrime2Region):
         MetroidPrime2Exit(
             destination="Ing Hive - Hive Summit (Safe Zone)",
             door=DoorCover.Opened,
-            rule=lambda state, player: state.has("Space Jump Booots", player)
+            rule=lambda state, player: state.has("Space Jump Boots", player)
         ),
         MetroidPrime2Exit(
             destination="P|Sanctuary Fortress - Aerie (Echo Visor)",
